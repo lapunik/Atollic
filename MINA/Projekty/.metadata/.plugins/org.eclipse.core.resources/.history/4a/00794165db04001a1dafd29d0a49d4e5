@@ -1,0 +1,102 @@
+/* Includes */
+// je v Nucleo ... #include "stm32f4xx.h"
+#include "nucleo_core.h"
+#include "nucleo_uart.h"
+#include "systick_ms.h"
+
+#include "oled_1305.h"
+
+#include "disp_hilevel.h"
+
+#if (HSE_VALUE != 8000000)
+#error HSE_VALUE must be set to 8MHz - parameters of project (or system_stm32f4xx.c) !!
+#endif
+
+/* Private macro */
+typedef enum {stateTextAtari, stateTextThin, stateText5x7, stateText3x5,
+  //NE, ma obracene bity stateText3x6,
+  stateBoxes, stateCircles, stateCube, stateLast } eStates;
+/* Private variables */
+/* Private function prototypes */
+/* Private functions */
+#include <math.h>
+
+
+/**
+**===========================================================================
+**
+**  Abstract: main program
+**
+**===========================================================================
+*/
+int main(void)
+{
+
+  SystemClock_100MHz();
+  SystemCoreClockUpdate();
+
+  InitSystickDefault();
+
+// shared SPI-CLK  Nucleo_SetPinGPIO(GPIOA, 5, output);
+//  Nucleo_SetPinGPIO(GPIOC, 13, input_pullup);
+  Nucleo_SetPinGPIO(GPIOA, 0, input_pullup);
+
+  Nucleo_StartUart2(38400);
+
+  // pozor, bez tohoto nefunguje putchar a musel by byt fputc(.., stdout)
+  setvbuf(stdout,NULL,_IONBF,0);
+  setvbuf(stdin,NULL,_IONBF,0);
+
+  puts("\n\nStart OLED - " __DATE__ " " __TIME__);
+  printf("CoreClock: %ld\n", SystemCoreClock);
+
+  OLED_Init();    //! globalne musi byt nastaven REFRESH_TIMER, ktery Timer pro refresh
+
+  WaitMs(50);
+
+  puts("OLED Init finish");
+
+  DISP_Clear();
+
+  timeBase = CUR_TICKS - 1;   // aby se to hned spustilo
+
+  DISP_GotoXY(0, 0);
+
+  bool stridac = false;
+
+  int x = 0;
+  int y = 0;
+
+  int width = OLED_WIDTH_PIX-1;
+  int height = OLED_HEIGHT_PIX-1;
+
+
+  /* Infinite loop */
+  while (1)
+  {
+    if (CUR_TICKS > timeBase)
+    {
+    	timeBase = CUR_TICKS + timeBase;
+
+    	DISP_SetFont(font_atari_8x8);
+    	// OLED_WIDTH_PIX 128 pixelù
+    	// OLED_HEIGHT_PIX  32 pixelù
+    	// OLED_WIDTH_BYTES 132
+    	// OLED_HEIGHT_BYTES  4
+
+        DISP_Clear();
+        if(stridac)
+        {
+        	DISP_DrawRect(x,y,width,hight,true);
+        }
+        else
+        {
+            DISP_DrawRect(x,y,width,hight,false);
+        }
+       // DISP_GotoXY(0, 0);
+
+       // DISP_WriteString("Wendy 3x5");
+
+    }
+  }
+}

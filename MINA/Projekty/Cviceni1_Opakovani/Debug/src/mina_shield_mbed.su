@@ -1,0 +1,2 @@
+mina_shield_mbed.c:10:7:InicializaceSPILED	8	static
+mina_shield_mbed.c:39:6:WriteSPILED	24	static

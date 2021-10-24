@@ -1,0 +1,88 @@
+/* Includes */
+#include "nucleo_core.h"
+#include "nucleo_uart.h"
+#include "systick_ms.h"
+#include "oled_1305.h"
+#include "disp_hilevel.h"
+#if (HSE_VALUE != 8000000)
+#error HSE_VALUE must be set to 8MHz - parameters of project (or system_stm32f4xx.c) !!
+#endif
+#include <math.h>
+
+/**
+**===========================================================================
+**
+**  Abstract: main program
+**
+**===========================================================================
+*/
+int main(void)
+{
+  uint32_t timeBase = 0;
+
+  SystemClock_100MHz();
+  SystemCoreClockUpdate();
+
+  InitSystickDefault();
+  Nucleo_SetPinGPIO(GPIOA, 0, input_pullup);
+
+  Nucleo_StartUart2(38400);
+
+  setvbuf(stdout,NULL,_IONBF,0);
+  setvbuf(stdin,NULL,_IONBF,0);
+
+  puts("\n\nOLED start: " __DATE__ " " __TIME__);
+  printf("CoreClock: %ld\n", SystemCoreClock);
+
+  OLED_Init();
+
+  WaitMs(50);
+
+  puts("OLED Init finish");
+
+  DISP_Clear();
+
+  timeBase = CUR_TICKS - 1;
+
+  DISP_GotoXY(0, 0);
+
+  DISP_SetFont(font_atari_8x8);
+
+  int x = -32;
+
+
+  /* Infinite loop */
+  while (1)
+  {
+    if (CUR_TICKS > timeBase)
+    {
+
+      timeBase = CUR_TICKS + 50;
+
+      putchar('*');
+
+
+      DISP_Clear();
+
+      DISP_FillRect(x,0,32,32,true);
+
+      DISP_FillRect(32,8,64,16,false);
+
+      char str[] = "PI = 3";
+
+      DISP_GotoXY(32, 24);
+
+      DISP_WriteString(str);
+
+
+      x++;
+
+      if(x > 128)
+      {
+    	  x = -32;
+      }
+
+    }
+
+  }
+}

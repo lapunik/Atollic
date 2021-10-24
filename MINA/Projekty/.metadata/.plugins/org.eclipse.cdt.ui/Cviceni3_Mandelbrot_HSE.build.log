@@ -1,0 +1,17 @@
+15:28:46 **** Incremental Build of configuration Debug for project Cviceni3_Mandelbrot_HSE ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\src\stm_core.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\stm_core.o 
+arm-atollic-eabi-gcc -o Cviceni3_Mandelbrot_HSE.elf src\main.o src\mbed_shield_lcd.o src\mina_shield_mbed.o src\nucleo_usart.o src\startup_stm32f411xe.o src\stm_core.o src\syscalls.o src\system_stm32f4xx.o src\tiny_printf.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=Cviceni3_Mandelbrot_HSE.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+D:\Programy\TrueSTUDIO for STM32 9.3.0\ide\jre\bin\java -jar D:\Programy\TrueSTUDIO for STM32 9.3.0\Tools\arm-atollic-reports.jar sizeinfo list Cviceni3_Mandelbrot_HSE.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+   7972	   1040	   1568	  10580	   2954	Cviceni3_Mandelbrot_HSE.elf
+Print size information done
+Generate listing file
+Output sent to: Cviceni3_Mandelbrot_HSE.list
+Generate listing file done
+Generate build reports done
+
+15:28:47 Build Finished (took 1s.79ms)
+

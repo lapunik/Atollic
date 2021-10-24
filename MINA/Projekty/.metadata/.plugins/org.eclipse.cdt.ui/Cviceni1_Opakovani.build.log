@@ -1,0 +1,5 @@
+13:17:20 **** Clean-only build of configuration Debug for project Cviceni1_Opakovani ****
+rm -rf src/main.o src/tiny_printf.o src/tiny_printf.d src/mina_shield_mbed.o src/startup_stm32f411xe.o Cviceni1_Opakovani.elf src/mina_shield_mbed.d src/nucleo_usart.o Cviceni1_Opakovani src/syscalls.d src/nucleo_usart.d src/stm_core.d src/syscalls.o src/system_stm32f4xx.o src/stm_core.o src/main.d src/system_stm32f4xx.d 
+
+13:17:21 Build Finished (took 701ms)
+

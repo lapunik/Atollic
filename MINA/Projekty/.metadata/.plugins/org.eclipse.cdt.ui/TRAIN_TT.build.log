@@ -1,0 +1,35 @@
+22:46:29 **** Rebuild of configuration Debug for project TRAIN_TT ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\NF411_OLED_ASE\src\disp_hilevel.c -std=gnu11 -O0 -g -fstack-usage -Wall -specs=nano.specs -o NF411_OLED_ASE\src\disp_hilevel.o 
+..\NF411_OLED_ASE\src\disp_hilevel.c: In function 'DISP_SetFont':
+..\NF411_OLED_ASE\src\disp_hilevel.c:46:18: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+       bpFontBase = font_atari_8x8_data + sizeof(FONT_Header_t);
+                  ^
+..\NF411_OLED_ASE\src\disp_hilevel.c:50:18: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+       bpFontBase = font_thin_8x8_data + sizeof(FONT_Header_t);
+                  ^
+..\NF411_OLED_ASE\src\disp_hilevel.c:54:18: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+       bpFontBase = font_system_5x7_data + sizeof(FONT_Header_t);
+                  ^
+..\NF411_OLED_ASE\src\disp_hilevel.c:58:18: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+       bpFontBase = font_wendy_3x5_data + sizeof(FONT_Header_t);
+                  ^
+..\NF411_OLED_ASE\src\disp_hilevel.c:62:18: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+       bpFontBase = font_newbasic_3x6_data + sizeof(FONT_Header_t);
+                  ^
+arm-atollic-eabi-gcc -c ..\NF411_OLED_ASE\src\font_thin_8x8.c -std=gnu11 -O0 -g -fstack-usage -Wall -specs=nano.specs -o NF411_OLED_ASE\src\font_thin_8x8.o 
+arm-atollic-eabi-gcc -c ..\NF411_OLED_ASE\src\font_atari_8x8.c -std=gnu11 -O0 -g -fstack-usage -Wall -specs=nano.specs -o NF411_OLED_ASE\src\font_atari_8x8.o 
+arm-atollic-eabi-gcc -c ..\NF411_OLED_ASE\src\uart_ring.c -std=gnu11 -O0 -g -fstack-usage -Wall -specs=nano.specs -o NF411_OLED_ASE\src\uart_ring.o 
+..\NF411_OLED_ASE\src\uart_ring.c: In function 'UartRingCreate':
+..\NF411_OLED_ASE\src\uart_ring.c:20:22: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+   desc._lowLevelSend = desc._lowLevelDisIRQ_W = desc._lowLevelEnIRQ_W = NULL;
+                      ^
+arm-atollic-eabi-gcc -c ..\NF411_OLED_ASE\src\nucleo_core.c -std=gnu11 -O0 -g -fstack-usage -Wall -specs=nano.specs -o NF411_OLED_ASE\src\nucleo_core.o 
+In file included from ..\NF411_OLED_ASE\src\nucleo_core.c:8:0:
+..\NF411_OLED_ASE\src\nucleo_core.h:11:23: fatal error: stm32f4xx.h: No such file or directory
+ #include "stm32f4xx.h"
+                       ^
+compilation terminated.
+
+22:46:31 Build Finished (took 1s.597ms)
+

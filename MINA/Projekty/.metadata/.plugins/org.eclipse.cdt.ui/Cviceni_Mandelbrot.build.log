@@ -1,0 +1,11 @@
+21:01:16 **** Incremental Build of configuration Debug for project Cviceni_Mandelbrot ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -DHSE_VALUE=8000000 -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
+arm-atollic-eabi-gcc -o Cviceni_Mandelbrot.elf src\main.o src\mbed_shield_lcd.o src\mina_shield_mbed.o src\nucleo_usart.o src\startup_stm32f411xe.o src\stm_core.o src\syscalls.o src\system_stm32f4xx.o src\tiny_printf.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=Cviceni_Mandelbrot.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+src\mbed_shield_lcd.o: In function `MBED_LCD_init_hw':
+C:\Users\Lapunik\Dropbox\ARM hardware\MINA\Projekty\Cviceni_Mandelbrot\Debug/..\src/mbed_shield_lcd.c:149: undefined reference to `GPIOConfigureAlternativFunction'
+C:\Users\Lapunik\Dropbox\ARM hardware\MINA\Projekty\Cviceni_Mandelbrot\Debug/..\src/mbed_shield_lcd.c:151: undefined reference to `GPIOConfigureAlternativFunction'
+collect2.exe: error: ld returned 1 exit status
+
+21:01:17 Build Finished (took 1s.52ms)
+

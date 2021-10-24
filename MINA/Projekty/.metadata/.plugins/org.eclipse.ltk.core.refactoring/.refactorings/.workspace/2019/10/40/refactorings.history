@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Cviceni2_Terminalem_ovladane_RGB_PWM/src/README.md&apos;" deleteContents="false" description="Delete resource &apos;Cviceni2_Terminalem_ovladane_RGB_PWM/src/README.md&apos;" element1="/Cviceni2_Terminalem_ovladane_RGB_PWM/src/README.md" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1570031273406"/>
+</session>

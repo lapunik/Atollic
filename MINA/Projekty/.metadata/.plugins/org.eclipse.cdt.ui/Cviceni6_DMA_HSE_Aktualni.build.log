@@ -1,0 +1,11 @@
+20:39:07 **** Incremental Build of configuration Debug for project Cviceni6_DMA_HSE_Aktualni ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\src\nucleo_usart.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\nucleo_usart.o 
+arm-atollic-eabi-gcc -c ..\src\stm_core.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\stm_core.o 
+arm-atollic-eabi-gcc -c ..\src\Nová složka\nucleo_usart.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\Nová složka\nucleo_usart.o 
+arm-atollic-eabi-gcc: error: ..\src\Nová složka\nucleo_usart.c: No such file or directory
+arm-atollic-eabi-gcc: fatal error: no input files
+compilation terminated.
+
+20:39:08 Build Finished (took 913ms)
+

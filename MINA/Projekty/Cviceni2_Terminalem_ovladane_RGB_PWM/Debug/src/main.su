@@ -1,0 +1,8 @@
+core_cm4.h:1698:22:NVIC_SetPriority	16	static
+core_cm4.h:1830:26:SysTick_Config	16	static
+main.c:36:6:SysTick_Handler	4	static
+main.c:40:6:DrawBackground	24	static
+main.c:78:6:DrawFront	32	static
+main.c:104:6:DeleateBackground	16	static
+main.c:112:6:SetPWM	16	static
+main.c:119:5:main	40	static
