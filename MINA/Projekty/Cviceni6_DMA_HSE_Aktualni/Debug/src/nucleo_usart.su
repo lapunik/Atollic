@@ -1,0 +1,5 @@
+nucleo_usart.c:10:5:Usart2Send	16	static
+nucleo_usart.c:22:6:Usart2SendString	16	static
+nucleo_usart.c:33:5:Usart2Recived	4	static
+nucleo_usart.c:40:6:IsUsart2Recived	4	static
+nucleo_usart.c:45:6:Usart2Initialization	40	static
