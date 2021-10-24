@@ -1,0 +1,11 @@
+nucleo_i2c.c:15:6:InitI2C1	32	static
+nucleo_i2c.c:92:13:I2C_Reset	16	static
+nucleo_i2c.c:106:26:I2C_sr	16	static
+nucleo_i2c.c:116:13:I2C_Start	16	static
+nucleo_i2c.c:133:13:I2C_Stop	16	static
+nucleo_i2c.c:150:13:I2C_Addr	24	static
+nucleo_i2c.c:167:13:I2C_Write	24	static
+nucleo_i2c.c:184:16:I2C_Read	24	static
+nucleo_i2c.c:204:6:I2C1_WriteByte	16	static
+nucleo_i2c.c:215:9:I2C1_ReadByte	24	static
+nucleo_i2c.c:231:6:I2C1_ReadBytes	24	static
