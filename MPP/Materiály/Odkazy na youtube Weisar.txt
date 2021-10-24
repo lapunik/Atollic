@@ -1,0 +1,13 @@
+https://youtu.be/HKaU71dIQr0 - rozbalení MPP kitu, popis částí
+https://youtu.be/17KWiK9OmRw - efekty s 8x červená LED na GPIOC
+https://youtu.be/_pdHqeFJvJA - instalace Atollic TrueStudio
+https://youtu.be/pSTtUWc3f9k - první spuštění TrueStudio + domácí příprava I
+https://youtu.be/zJEEqaQiSg0 - domácí II - pokročilé akce s GPIO
+https://youtu.be/NYUrBBr-4og - domácí III - SysTick a trochu přerušení
+https://youtu.be/xokHtahdLlY - domácí IV - Timer3 a trochu NVIC
+https://youtu.be/3p_-G1iAQ7o - domácí V - sériová komunikace (USART2)
+https://youtu.be/u5wR8G4MWac - domácí VII - LED na sériovém budiči - použití SPI nebo GPIO
+https://youtu.be/SWbfGTYxxMw - cvičení 8 - efekt 8 + 8 LED běžící bod - úkol na cvičení
+https://youtu.be/1BauSUP1ufk - domácí VIII - PWM použité ke generování tónu se střídou 50% a k řízení jasu RGB LED proměnnou střídou
+https://youtu.be/IfFeIgU5ej0 - využití A/D převodníku
+https://youtu.be/jK3VLXOBCzY - připojení akcelerometru přes I2C
