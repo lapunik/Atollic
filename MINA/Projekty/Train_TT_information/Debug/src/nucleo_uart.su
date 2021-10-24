@@ -1,0 +1,5 @@
+nucleo_uart.c:10:6:Nucleo_StartUart2	32	static
+nucleo_uart.c:109:5:usart2_putc	16	static
+nucleo_uart.c:127:5:usart2_getc	4	static
+nucleo_uart.c:134:15:isCharRecv	4	static
+nucleo_uart.c:139:6:SetAddCRtoLF	16	static

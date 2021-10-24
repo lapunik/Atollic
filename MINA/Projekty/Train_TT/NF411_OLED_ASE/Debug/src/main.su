@@ -1,0 +1,7 @@
+stdio.h:684:22:__sputc_r	24	static
+main.c:53:6:rotateZ3D	48	static
+main.c:67:6:rotateY3D	48	static
+main.c:81:6:rotateX3D	48	static
+main.c:95:6:DrawCube	40	static
+main.c:108:6:RedrawCube	24	static
+main.c:129:5:main	40	static

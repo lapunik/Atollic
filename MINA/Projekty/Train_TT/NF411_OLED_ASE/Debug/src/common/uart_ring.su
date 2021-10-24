@@ -1,0 +1,14 @@
+uart_ring.c:10:11:UartRingCreate	96	static
+uart_ring.c:33:6:UartRingInitFn_W	24	static
+uart_ring.c:42:6:UartRingInitFn_R	24	static
+uart_ring.c:50:6:UartRingIsEmpty_W	16	static
+uart_ring.c:55:6:UartRingIsOver_W	16	static
+uart_ring.c:60:6:UartRingSend	16	static
+uart_ring.c:99:6:UartRingProcessIRQ_W	16	static
+uart_ring.c:121:6:UartRingDiscard_W	16	static
+uart_ring.c:129:6:UartRingRecv	16	static
+uart_ring.c:152:6:UartRingIsData	16	static
+uart_ring.c:157:6:UartRingIsEmpty_R	16	static
+uart_ring.c:162:6:UartRingIsOver_R	16	static
+uart_ring.c:167:6:UartRingProcessIRQ_R	16	static
+uart_ring.c:192:6:UartRingDiscard_R	24	static

@@ -1,0 +1,9 @@
+SSD1322.c:87:6:OLED_Init	8	static
+SSD1322.c:96:13:OLED_1322_InitHW	56	static
+SSD1322.c:130:13:OLED_1322_send	64	static
+SSD1322.c:146:13:OLED_1322_sendData	56	static
+SSD1322.c:163:6:OLED_1322_WriteCmd	16	static
+SSD1322.c:168:6:OLED_1322_WriteData	16	static
+SSD1322.c:175:6:OLED_1322_drawPixel	24	static
+SSD1322.c:193:13:OLED_1322_InitSW	56	static
+SSD1322.c:369:6:OLED_1322_Refresh	8	static

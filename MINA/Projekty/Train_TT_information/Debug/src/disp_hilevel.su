@@ -1,0 +1,16 @@
+disp_hilevel.c:17:6:SetHiLevelDisp	24	static
+disp_hilevel.c:37:6:DISP_SetFont	16	static
+disp_hilevel.c:69:5:DISP_GetCharPerRow	4	static
+disp_hilevel.c:74:5:DISP_GetRowPerDisp	4	static
+disp_hilevel.c:79:6:DISP_GotoXY	16	static
+disp_hilevel.c:85:6:DISP_WriteChar	16	static
+disp_hilevel.c:100:6:DISP_WriteString	16	static
+disp_hilevel.c:109:6:DISP_WriteCharXY	48	static
+disp_hilevel.c:170:6:DISP_Clear	8	static
+disp_hilevel.c:175:6:DISP_Fill	24	static
+disp_hilevel.c:193:6:DISP_DemoCntRow	24	static
+disp_hilevel.c:208:6:DISP_DrawLine	48	static
+disp_hilevel.c:234:6:DISP_DrawRect	32	static
+disp_hilevel.c:242:6:DISP_FillRect	32	static
+disp_hilevel.c:260:6:DISP_DrawCircle	40	static
+disp_hilevel.c:291:6:DISP_FillCircle	72	static

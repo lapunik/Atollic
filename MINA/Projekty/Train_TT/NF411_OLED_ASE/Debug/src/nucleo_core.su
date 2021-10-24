@@ -1,0 +1,4 @@
+nucleo_core.c:10:6:SystemClock_100MHz	4	static
+nucleo_core.c:54:6:Nucleo_SetPinGPIO	32	static
+nucleo_core.c:150:6:Nucleo_SetPinAFGPIO	24	static
+nucleo_core.c:157:10:GetTimerClock	24	static
