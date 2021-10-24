@@ -1,0 +1,8 @@
+core_cm4.h:1698:22:NVIC_SetPriority	16	static
+core_cm4.h:1830:26:SysTick_Config	16	static
+stdio.h:684:22:__sputc_r	24	static
+main.c:40:5:Usart2Send	16	static
+main.c:52:6:Usart2SendString	16	static
+main.c:63:5:Usart2Recived	4	static
+main.c:70:6:IsUsart2Recived	4	static
+main.c:78:5:main	24	static
