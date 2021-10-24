@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 5 resources" deleteContents="false" description="Delete 5 resources" element1="/Cviceni5_USART/src/main.c" element2="/Cviceni5_USART/src/startup_stm32f411xe.s" element3="/Cviceni5_USART/src/syscalls.c" element4="/Cviceni5_USART/src/system_stm32f4xx.c" element5="/Cviceni5_USART/src/tiny_printf.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="5" stamp="1553675458075"/>
+</session>

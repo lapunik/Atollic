@@ -1,0 +1,370 @@
+
+Cviceni1_Blikani_LED.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   00000198  08000000  08000000  00010000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         000001c8  08000198  08000198  00010198  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       00000000  08000360  08000368  00010368  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .init_array   00000004  08000360  08000360  00010360  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .fini_array   00000004  08000364  08000364  00010364  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .data         00000000  20000000  20000000  00010368  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .bss          0000001c  20000000  08000368  00020000  2**2
+                  ALLOC
+  7 ._user_heap_stack 00000400  2000001c  08000368  0002001c  2**0
+                  ALLOC
+  8 .ARM.attributes 00000030  00000000  00000000  00010368  2**0
+                  CONTENTS, READONLY
+  9 .debug_info   0000086b  00000000  00000000  00010398  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_abbrev 00000204  00000000  00000000  00010c03  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_aranges 00000070  00000000  00000000  00010e08  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  00010e78  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_line   000003bd  00000000  00000000  00010ec0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_str    00000383  00000000  00000000  0001127d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .comment      0000007c  00000000  00000000  00011600  2**0
+                  CONTENTS, READONLY
+ 16 .debug_frame  000000b0  00000000  00000000  0001167c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .stabstr      0000003f  00000000  00000000  0001172c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+08000198 <__do_global_dtors_aux>:
+ 8000198:	b510      	push	{r4, lr}
+ 800019a:	4c05      	ldr	r4, [pc, #20]	; (80001b0 <__do_global_dtors_aux+0x18>)
+ 800019c:	7823      	ldrb	r3, [r4, #0]
+ 800019e:	b933      	cbnz	r3, 80001ae <__do_global_dtors_aux+0x16>
+ 80001a0:	4b04      	ldr	r3, [pc, #16]	; (80001b4 <__do_global_dtors_aux+0x1c>)
+ 80001a2:	b113      	cbz	r3, 80001aa <__do_global_dtors_aux+0x12>
+ 80001a4:	4804      	ldr	r0, [pc, #16]	; (80001b8 <__do_global_dtors_aux+0x20>)
+ 80001a6:	f3af 8000 	nop.w
+ 80001aa:	2301      	movs	r3, #1
+ 80001ac:	7023      	strb	r3, [r4, #0]
+ 80001ae:	bd10      	pop	{r4, pc}
+ 80001b0:	20000000 	.word	0x20000000
+ 80001b4:	00000000 	.word	0x00000000
+ 80001b8:	08000348 	.word	0x08000348
+
+080001bc <frame_dummy>:
+ 80001bc:	b508      	push	{r3, lr}
+ 80001be:	4b03      	ldr	r3, [pc, #12]	; (80001cc <frame_dummy+0x10>)
+ 80001c0:	b11b      	cbz	r3, 80001ca <frame_dummy+0xe>
+ 80001c2:	4903      	ldr	r1, [pc, #12]	; (80001d0 <frame_dummy+0x14>)
+ 80001c4:	4803      	ldr	r0, [pc, #12]	; (80001d4 <frame_dummy+0x18>)
+ 80001c6:	f3af 8000 	nop.w
+ 80001ca:	bd08      	pop	{r3, pc}
+ 80001cc:	00000000 	.word	0x00000000
+ 80001d0:	20000004 	.word	0x20000004
+ 80001d4:	08000348 	.word	0x08000348
+
+080001d8 <main>:
+**  Abstract: main program
+**
+**===========================================================================
+*/
+int main(void)
+{
+ 80001d8:	b480      	push	{r7}
+ 80001da:	b083      	sub	sp, #12
+ 80001dc:	af00      	add	r7, sp, #0
+  int i = 0;
+ 80001de:	2300      	movs	r3, #0
+ 80001e0:	607b      	str	r3, [r7, #4]
+  // operátor -> nepøímý pøístup ke èlenu struktury (teèka . je pøímý pøístup) ale tady máme UKAZATEL, takže potøebujeme pøístup nepøímý!
+  // AHB1ENR(nebo AHB1RSTR) jsou registry v bloku periferních registrù RCC
+  // "RCC_AHB1ENR_GPIOAEN" atd.. jsou konkterni konstanty reprezentujici pozici bitu v registru (napø kdyby to byl pátý bit v 16ti bitovém registru tak konstanta vypadá takhle: 0000 0000 0010 0000), registry jsou buï 16ti nebo 32 bitové
+
+  /* My code */
+  if(!(RCC ->AHB1ENR |= RCC_AHB1ENR_GPIOAEN)) // pokud nejsou povoleny hodiny (povolení hodin celé bránì PA)
+ 80001e2:	4a14      	ldr	r2, [pc, #80]	; (8000234 <main+0x5c>)
+ 80001e4:	4b13      	ldr	r3, [pc, #76]	; (8000234 <main+0x5c>)
+ 80001e6:	6b1b      	ldr	r3, [r3, #48]	; 0x30
+ 80001e8:	f043 0301 	orr.w	r3, r3, #1
+ 80001ec:	6313      	str	r3, [r2, #48]	; 0x30
+    RCC->AHB1RSTR |= RCC_AHB1RSTR_GPIOARST; // proveï restart periferie GPIO (teï ovládáme registr AHB1RSTR, nastavime bit "RCC_AHB1RSTR_GPIOARST" do jednicky a o radek niz do nuly aby se resetovala periferie)
+    RCC->AHB1RSTR &= ~RCC_AHB1RSTR_GPIOARST; // konec restartu periferie GPIO (zpìt do nuly(negaci bitu "RCC_AHB1RSTR_GPIOARST" (to ale ovsem znamená že na všech ostatnich mistech krom na tomhle bitu je nyní jednièka) andujeme s pùvodním registrem(všude jsou jednièky, tam se hodnota nemeni, jen tak kde je nula bude bit nastaven do nuly) ))
+
+  }
+
+  GPIOA->MODER |= 0x01<<(5*2); // takže MODER je registr periferie GPIOA (vstupnì výstupní porty pro všeobecné úèely, na konci A až F, jen jako poøadí, jsou stejné snad), nastavuji dvìmi bity, takže pokud máme 16 portù (který umìjí být vstupy i výstupy), tak potøebujeme 32 bitový registr.. takže my potøebujeme nastavit port 5 (ten je pøipojen na LED) (pozor, èíslují se od nuly!!!) to znamená že 5 krát 2 (vstup/vystup) to je deset, takže 10krát potøebujeme posunout jednièku aby na registru vznikla kombinace 01(00 - vstup, 10 - alternativní funkce, 11 - analog mode) na registru v místì 10,11(to je pátý port)
+ 80001ee:	4a12      	ldr	r2, [pc, #72]	; (8000238 <main+0x60>)
+ 80001f0:	4b11      	ldr	r3, [pc, #68]	; (8000238 <main+0x60>)
+ 80001f2:	681b      	ldr	r3, [r3, #0]
+ 80001f4:	f443 6380 	orr.w	r3, r3, #1024	; 0x400
+ 80001f8:	6013      	str	r3, [r2, #0]
+  GPIOA->OTYPER &= ~(1<<5); // registr "OTYPER" je registr který urèuje typ výstupu (výstup mùže být buï: 1 - open drain (použit pouze tranzistor do zemì, pokud není výstup v jednièce, tak je v nule) nebo 0 - push pull (oba tranzistory na výstupu jsou použity, pokud neni výstup v jednièce tak je ve stavu vysoké impedance Z)), my chceme typ push pull takže jdeme nastavit nulu a na pozici v registru 5 (u tohoto portu chceme nastavit push pull)
+ 80001fa:	4a0f      	ldr	r2, [pc, #60]	; (8000238 <main+0x60>)
+ 80001fc:	4b0e      	ldr	r3, [pc, #56]	; (8000238 <main+0x60>)
+ 80001fe:	685b      	ldr	r3, [r3, #4]
+ 8000200:	f023 0320 	bic.w	r3, r3, #32
+ 8000204:	6053      	str	r3, [r2, #4]
+  GPIOA->OSPEEDR |= 0x03<<(5*2); //registr OSPEEDR øídí rychlost, zase jsou to dva bity na jeden výstup jako u MODER, ale tady chci nastavit hodnotu 11(higt)(00 - low, 01 - medium, 10 - fast)  proto posunuji ne jednièku ale trojku o 5 krát 2 bity doleva
+ 8000206:	4a0c      	ldr	r2, [pc, #48]	; (8000238 <main+0x60>)
+ 8000208:	4b0b      	ldr	r3, [pc, #44]	; (8000238 <main+0x60>)
+ 800020a:	689b      	ldr	r3, [r3, #8]
+ 800020c:	f443 6340 	orr.w	r3, r3, #3072	; 0xc00
+ 8000210:	6093      	str	r3, [r2, #8]
+  /* Infinite loop */
+
+  while (1)
+  {
+   // GPIOA -> ODR ^= 1<<6;
+   GPIOA -> ODR ^= 1<<5; // "ODR" je registr výstupní hodnoty (output data register), my chceme aby se hodnota na vystupu menila, tudiz logická operace XOR ^ a zase o 5 bitù posunutá, protože chceme port 5
+ 8000212:	4a09      	ldr	r2, [pc, #36]	; (8000238 <main+0x60>)
+ 8000214:	4b08      	ldr	r3, [pc, #32]	; (8000238 <main+0x60>)
+ 8000216:	695b      	ldr	r3, [r3, #20]
+ 8000218:	f083 0320 	eor.w	r3, r3, #32
+ 800021c:	6153      	str	r3, [r2, #20]
+   for(i = 0;i<500000;i++); // cekaci cyklus
+ 800021e:	2300      	movs	r3, #0
+ 8000220:	607b      	str	r3, [r7, #4]
+ 8000222:	e002      	b.n	800022a <main+0x52>
+ 8000224:	687b      	ldr	r3, [r7, #4]
+ 8000226:	3301      	adds	r3, #1
+ 8000228:	607b      	str	r3, [r7, #4]
+ 800022a:	687b      	ldr	r3, [r7, #4]
+ 800022c:	4a03      	ldr	r2, [pc, #12]	; (800023c <main+0x64>)
+ 800022e:	4293      	cmp	r3, r2
+ 8000230:	ddf8      	ble.n	8000224 <main+0x4c>
+   GPIOA -> ODR ^= 1<<5; // "ODR" je registr výstupní hodnoty (output data register), my chceme aby se hodnota na vystupu menila, tudiz logická operace XOR ^ a zase o 5 bitù posunutá, protože chceme port 5
+ 8000232:	e7ee      	b.n	8000212 <main+0x3a>
+ 8000234:	40023800 	.word	0x40023800
+ 8000238:	40020000 	.word	0x40020000
+ 800023c:	0007a11f 	.word	0x0007a11f
+
+08000240 <Reset_Handler>:
+
+    .section  .text.Reset_Handler
+  .weak  Reset_Handler
+  .type  Reset_Handler, %function
+Reset_Handler:  
+  ldr   sp, =_estack    		 /* set stack pointer */
+ 8000240:	f8df d034 	ldr.w	sp, [pc, #52]	; 8000278 <LoopFillZerobss+0x14>
+
+/* Copy the data segment initializers from flash to SRAM */  
+  movs  r1, #0
+ 8000244:	2100      	movs	r1, #0
+  b  LoopCopyDataInit
+ 8000246:	e003      	b.n	8000250 <LoopCopyDataInit>
+
+08000248 <CopyDataInit>:
+
+CopyDataInit:
+  ldr  r3, =_sidata
+ 8000248:	4b0c      	ldr	r3, [pc, #48]	; (800027c <LoopFillZerobss+0x18>)
+  ldr  r3, [r3, r1]
+ 800024a:	585b      	ldr	r3, [r3, r1]
+  str  r3, [r0, r1]
+ 800024c:	5043      	str	r3, [r0, r1]
+  adds  r1, r1, #4
+ 800024e:	3104      	adds	r1, #4
+
+08000250 <LoopCopyDataInit>:
+    
+LoopCopyDataInit:
+  ldr  r0, =_sdata
+ 8000250:	480b      	ldr	r0, [pc, #44]	; (8000280 <LoopFillZerobss+0x1c>)
+  ldr  r3, =_edata
+ 8000252:	4b0c      	ldr	r3, [pc, #48]	; (8000284 <LoopFillZerobss+0x20>)
+  adds  r2, r0, r1
+ 8000254:	1842      	adds	r2, r0, r1
+  cmp  r2, r3
+ 8000256:	429a      	cmp	r2, r3
+  bcc  CopyDataInit
+ 8000258:	d3f6      	bcc.n	8000248 <CopyDataInit>
+  ldr  r2, =_sbss
+ 800025a:	4a0b      	ldr	r2, [pc, #44]	; (8000288 <LoopFillZerobss+0x24>)
+  b  LoopFillZerobss
+ 800025c:	e002      	b.n	8000264 <LoopFillZerobss>
+
+0800025e <FillZerobss>:
+/* Zero fill the bss segment. */  
+FillZerobss:
+  movs  r3, #0
+ 800025e:	2300      	movs	r3, #0
+  str  r3, [r2], #4
+ 8000260:	f842 3b04 	str.w	r3, [r2], #4
+
+08000264 <LoopFillZerobss>:
+    
+LoopFillZerobss:
+  ldr  r3, = _ebss
+ 8000264:	4b09      	ldr	r3, [pc, #36]	; (800028c <LoopFillZerobss+0x28>)
+  cmp  r2, r3
+ 8000266:	429a      	cmp	r2, r3
+  bcc  FillZerobss
+ 8000268:	d3f9      	bcc.n	800025e <FillZerobss>
+
+/* Call the clock system intitialization function.*/
+  bl  SystemInit   
+ 800026a:	f000 f813 	bl	8000294 <SystemInit>
+/* Call static constructors */
+    bl __libc_init_array
+ 800026e:	f000 f847 	bl	8000300 <__libc_init_array>
+/* Call the application's entry point.*/
+  bl  main
+ 8000272:	f7ff ffb1 	bl	80001d8 <main>
+  bx  lr    
+ 8000276:	4770      	bx	lr
+  ldr   sp, =_estack    		 /* set stack pointer */
+ 8000278:	20020000 	.word	0x20020000
+  ldr  r3, =_sidata
+ 800027c:	08000368 	.word	0x08000368
+  ldr  r0, =_sdata
+ 8000280:	20000000 	.word	0x20000000
+  ldr  r3, =_edata
+ 8000284:	20000000 	.word	0x20000000
+  ldr  r2, =_sbss
+ 8000288:	20000000 	.word	0x20000000
+  ldr  r3, = _ebss
+ 800028c:	2000001c 	.word	0x2000001c
+
+08000290 <ADC_IRQHandler>:
+ * @retval None       
+*/
+    .section  .text.Default_Handler,"ax",%progbits
+Default_Handler:
+Infinite_Loop:
+  b  Infinite_Loop
+ 8000290:	e7fe      	b.n	8000290 <ADC_IRQHandler>
+	...
+
+08000294 <SystemInit>:
+  *         configuration.
+  * @param  None
+  * @retval None
+  */
+void SystemInit(void)
+{
+ 8000294:	b480      	push	{r7}
+ 8000296:	af00      	add	r7, sp, #0
+  /* FPU settings ------------------------------------------------------------*/
+  #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+    SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+ 8000298:	4a16      	ldr	r2, [pc, #88]	; (80002f4 <SystemInit+0x60>)
+ 800029a:	4b16      	ldr	r3, [pc, #88]	; (80002f4 <SystemInit+0x60>)
+ 800029c:	f8d3 3088 	ldr.w	r3, [r3, #136]	; 0x88
+ 80002a0:	f443 0370 	orr.w	r3, r3, #15728640	; 0xf00000
+ 80002a4:	f8c2 3088 	str.w	r3, [r2, #136]	; 0x88
+  #endif
+  /* Reset the RCC clock configuration to the default reset state ------------*/
+  /* Set HSION bit */
+  RCC->CR |= (uint32_t)0x00000001;
+ 80002a8:	4a13      	ldr	r2, [pc, #76]	; (80002f8 <SystemInit+0x64>)
+ 80002aa:	4b13      	ldr	r3, [pc, #76]	; (80002f8 <SystemInit+0x64>)
+ 80002ac:	681b      	ldr	r3, [r3, #0]
+ 80002ae:	f043 0301 	orr.w	r3, r3, #1
+ 80002b2:	6013      	str	r3, [r2, #0]
+
+  /* Reset CFGR register */
+  RCC->CFGR = 0x00000000;
+ 80002b4:	4b10      	ldr	r3, [pc, #64]	; (80002f8 <SystemInit+0x64>)
+ 80002b6:	2200      	movs	r2, #0
+ 80002b8:	609a      	str	r2, [r3, #8]
+
+  /* Reset HSEON, CSSON and PLLON bits */
+  RCC->CR &= (uint32_t)0xFEF6FFFF;
+ 80002ba:	4a0f      	ldr	r2, [pc, #60]	; (80002f8 <SystemInit+0x64>)
+ 80002bc:	4b0e      	ldr	r3, [pc, #56]	; (80002f8 <SystemInit+0x64>)
+ 80002be:	681b      	ldr	r3, [r3, #0]
+ 80002c0:	f023 7384 	bic.w	r3, r3, #17301504	; 0x1080000
+ 80002c4:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 80002c8:	6013      	str	r3, [r2, #0]
+
+  /* Reset PLLCFGR register */
+  RCC->PLLCFGR = 0x24003010;
+ 80002ca:	4b0b      	ldr	r3, [pc, #44]	; (80002f8 <SystemInit+0x64>)
+ 80002cc:	4a0b      	ldr	r2, [pc, #44]	; (80002fc <SystemInit+0x68>)
+ 80002ce:	605a      	str	r2, [r3, #4]
+
+  /* Reset HSEBYP bit */
+  RCC->CR &= (uint32_t)0xFFFBFFFF;
+ 80002d0:	4a09      	ldr	r2, [pc, #36]	; (80002f8 <SystemInit+0x64>)
+ 80002d2:	4b09      	ldr	r3, [pc, #36]	; (80002f8 <SystemInit+0x64>)
+ 80002d4:	681b      	ldr	r3, [r3, #0]
+ 80002d6:	f423 2380 	bic.w	r3, r3, #262144	; 0x40000
+ 80002da:	6013      	str	r3, [r2, #0]
+
+  /* Disable all interrupts */
+  RCC->CIR = 0x00000000;
+ 80002dc:	4b06      	ldr	r3, [pc, #24]	; (80002f8 <SystemInit+0x64>)
+ 80002de:	2200      	movs	r2, #0
+ 80002e0:	60da      	str	r2, [r3, #12]
+
+  /* Configure the Vector Table location add offset address ------------------*/
+#ifdef VECT_TAB_SRAM
+  SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
+#else
+  SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
+ 80002e2:	4b04      	ldr	r3, [pc, #16]	; (80002f4 <SystemInit+0x60>)
+ 80002e4:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
+ 80002e8:	609a      	str	r2, [r3, #8]
+#endif
+}
+ 80002ea:	bf00      	nop
+ 80002ec:	46bd      	mov	sp, r7
+ 80002ee:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 80002f2:	4770      	bx	lr
+ 80002f4:	e000ed00 	.word	0xe000ed00
+ 80002f8:	40023800 	.word	0x40023800
+ 80002fc:	24003010 	.word	0x24003010
+
+08000300 <__libc_init_array>:
+ 8000300:	b570      	push	{r4, r5, r6, lr}
+ 8000302:	4e0d      	ldr	r6, [pc, #52]	; (8000338 <__libc_init_array+0x38>)
+ 8000304:	4c0d      	ldr	r4, [pc, #52]	; (800033c <__libc_init_array+0x3c>)
+ 8000306:	1ba4      	subs	r4, r4, r6
+ 8000308:	10a4      	asrs	r4, r4, #2
+ 800030a:	2500      	movs	r5, #0
+ 800030c:	42a5      	cmp	r5, r4
+ 800030e:	d109      	bne.n	8000324 <__libc_init_array+0x24>
+ 8000310:	4e0b      	ldr	r6, [pc, #44]	; (8000340 <__libc_init_array+0x40>)
+ 8000312:	4c0c      	ldr	r4, [pc, #48]	; (8000344 <__libc_init_array+0x44>)
+ 8000314:	f000 f818 	bl	8000348 <_init>
+ 8000318:	1ba4      	subs	r4, r4, r6
+ 800031a:	10a4      	asrs	r4, r4, #2
+ 800031c:	2500      	movs	r5, #0
+ 800031e:	42a5      	cmp	r5, r4
+ 8000320:	d105      	bne.n	800032e <__libc_init_array+0x2e>
+ 8000322:	bd70      	pop	{r4, r5, r6, pc}
+ 8000324:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8000328:	4798      	blx	r3
+ 800032a:	3501      	adds	r5, #1
+ 800032c:	e7ee      	b.n	800030c <__libc_init_array+0xc>
+ 800032e:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8000332:	4798      	blx	r3
+ 8000334:	3501      	adds	r5, #1
+ 8000336:	e7f2      	b.n	800031e <__libc_init_array+0x1e>
+ 8000338:	08000360 	.word	0x08000360
+ 800033c:	08000360 	.word	0x08000360
+ 8000340:	08000360 	.word	0x08000360
+ 8000344:	08000364 	.word	0x08000364
+
+08000348 <_init>:
+ 8000348:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800034a:	bf00      	nop
+ 800034c:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800034e:	bc08      	pop	{r3}
+ 8000350:	469e      	mov	lr, r3
+ 8000352:	4770      	bx	lr
+
+08000354 <_fini>:
+ 8000354:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000356:	bf00      	nop
+ 8000358:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800035a:	bc08      	pop	{r3}
+ 800035c:	469e      	mov	lr, r3
+ 800035e:	4770      	bx	lr

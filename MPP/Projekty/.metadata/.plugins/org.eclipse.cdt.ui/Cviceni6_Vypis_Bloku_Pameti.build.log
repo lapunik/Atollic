@@ -1,0 +1,23 @@
+10:06:47 **** Incremental Build of configuration Debug for project Cviceni6_Vypis_Bloku_Pameti ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
+..\src\main.c: In function 'main':
+..\src\main.c:66:39: warning: implicit declaration of function 'malloc' [-Wimplicit-function-declaration]
+   if (NULL == (pole = (unsigned char*)malloc(64))) { //allokuj pamet velikosti VELIKOST jako charový ukazatel.. protoze malloc vraci void.. od adresy "adresa"
+                                       ^~~~~~
+..\src\main.c:66:39: warning: incompatible implicit declaration of built-in function 'malloc'
+..\src\main.c:66:39: note: include '<stdlib.h>' or provide a declaration of 'malloc'
+arm-atollic-eabi-gcc -o Cviceni6_Vypis_Bloku_Pameti.elf src\main.o src\mpp_shield.o src\nucleo_usart.o src\startup_stm32f411xe.o src\stm_core.o src\syscalls.o src\system_stm32f4xx.o src\tiny_printf.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=Cviceni6_Vypis_Bloku_Pameti.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+D:\Programy\TrueSTUDIO for STM32 9.3.0\ide\jre\bin\java -jar D:\Programy\TrueSTUDIO for STM32 9.3.0\Tools\arm-atollic-reports.jar sizeinfo list Cviceni6_Vypis_Bloku_Pameti.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+   5620	    108	   1068	   6796	   1a8c	Cviceni6_Vypis_Bloku_Pameti.elf
+Print size information done
+Generate listing file
+Output sent to: Cviceni6_Vypis_Bloku_Pameti.list
+Generate listing file done
+Generate build reports done
+
+10:06:50 Build Finished (took 2s.908ms)
+

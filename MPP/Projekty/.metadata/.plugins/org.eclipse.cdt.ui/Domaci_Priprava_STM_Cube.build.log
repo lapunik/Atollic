@@ -1,0 +1,17 @@
+18:29:06 **** Incremental Build of configuration Debug for project Domaci_Priprava_STM_Cube ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F411xE -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -Os -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src\stm_core.o ..\Src\stm_core.c 
+In file included from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30:0,
+                 from ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:250,
+                 from ..\Src\stm_core.h:11,
+                 from ..\Src\stm_core.c:7:
+..\Src\stm_core.c: In function 'SetClock100MHz':
+../Inc/stm32f4xx_hal_conf.h:96:35: error: missing binary operator before token "8000000U"
+   #define HSE_VALUE    ((uint32_t)8000000U) /*!< Value of the External oscillator in Hz */
+                                   ^
+..\Src\stm_core.c:253:5: note: in expansion of macro 'HSE_VALUE'
+ #if HSE_VALUE != 8000000
+     ^~~~~~~~~
+
+18:29:07 Build Finished (took 207ms)
+

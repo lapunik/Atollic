@@ -1,0 +1,17 @@
+10:28:30 **** Incremental Build of configuration Debug for project Domaci_Priprava_Systick ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
+arm-atollic-eabi-gcc -o Domaci_Priprava_Systick.elf src\main.o src\mpp_shield.o src\startup_stm32f411xe.o src\stm_core.o src\system_stm32f4xx.o src\tiny_printf.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=Domaci_Priprava_Systick.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+D:\Programy\TrueSTUDIO for STM32 9.3.0\ide\jre\bin\java -jar D:\Programy\TrueSTUDIO for STM32 9.3.0\Tools\arm-atollic-reports.jar sizeinfo list Domaci_Priprava_Systick.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+   1912	     12	   1052	   2976	    ba0	Domaci_Priprava_Systick.elf
+Print size information done
+Generate listing file
+Output sent to: Domaci_Priprava_Systick.list
+Generate listing file done
+Generate build reports done
+
+10:28:31 Build Finished (took 913ms)
+

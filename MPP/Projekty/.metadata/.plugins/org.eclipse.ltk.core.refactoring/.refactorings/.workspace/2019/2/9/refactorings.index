@@ -1,0 +1,6 @@
+1551362702003	Delete resource 'FunctionForIO/Drivers/stm_core_c'
+1551362910955	Delete resource 'FunctionForIO/src/stm_core'
+1551363416969	Delete resource 'FunctionForIO/Drivers/stm_core'
+1551363845799	Delete resource 'FunctionForIO/src/mpp_shiel.c'
+1551388158757	Rename resource 'Domaci_Blosti_Buzzer'
+1551388246776	Rename resource 'FunctionForIO'

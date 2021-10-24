@@ -1,0 +1,17 @@
+00:49:04 **** Incremental Build of configuration Debug for project Domaci_Priprava_UART_Rozdeleno_Do_Knihoven ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ..\src\main.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F411xE -I../src -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src\main.o 
+arm-atollic-eabi-gcc -o Domaci_Priprava_UART_Rozdeleno_Do_Knihoven.elf src\main.o src\mpp_shield.o src\nucleo_usart.o src\startup_stm32f411xe.o src\stm_core.o src\syscalls.o src\system_stm32f4xx.o src\tiny_printf.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../stm32_flash.ld -specs=nosys.specs -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=Domaci_Priprava_UART_Rozdeleno_Do_Knihoven.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+D:\Programy\TrueSTUDIO for STM32 9.3.0\ide\jre\bin\java -jar D:\Programy\TrueSTUDIO for STM32 9.3.0\Tools\arm-atollic-reports.jar sizeinfo list Domaci_Priprava_UART_Rozdeleno_Do_Knihoven.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+   6616	    112	   1072	   7800	   1e78	Domaci_Priprava_UART_Rozdeleno_Do_Knihoven.elf
+Print size information done
+Generate listing file
+Output sent to: Domaci_Priprava_UART_Rozdeleno_Do_Knihoven.list
+Generate listing file done
+Generate build reports done
+
+00:49:05 Build Finished (took 963ms)
+

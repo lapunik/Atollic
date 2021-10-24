@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Domaci_Priprava_I2C_Akcelerometr/src/tiny_printf.c&apos; to &apos;tiny_printf.cx&apos;" description="Rename resource &apos;tiny_printf.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/tiny_printf.c" name="tiny_printf.cx" stamp="1555627059339" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Domaci_Priprava_I2C_Akcelerometr/src/tiny_printf.c&apos; to &apos;tiny_printf.cx&apos;" description="Rename resource &apos;tiny_printf.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/tiny_printf.c" name="tiny_printf.cx" stamp="1555660579160" updateReferences="true"/>
+</session>
