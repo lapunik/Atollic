@@ -1,0 +1,2 @@
+stdio_usart2.c:4:8:__io_putchar	16	static
+stdio_usart2.c:15:7:__io_getchar	4	static
