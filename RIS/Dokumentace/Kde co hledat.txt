@@ -1,0 +1,5 @@
+Popis registrů → Reference manual
+Celkové blokové schéma → Datasheet (strana 20, figure 4)
+Alternative function mapping → Datasheet (starna 75, table 12)
+Elektronické schéma procesoru včetně periferií → Nucleo deska (strana 74, figure 15)
+Handler funkce → startup_stm32l...xe.s
