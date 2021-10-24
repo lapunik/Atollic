@@ -1,0 +1,5 @@
+stm_core.c:9:6:GPIOConfigurePin	32	static
+stm_core.c:138:6:GPIOConfigureAlternativFunction	32	static
+stm_core.c:155:6:GPIOToggle	16	static
+stm_core.c:160:6:GPIORead	16	static
+stm_core.c:176:6:GPIOWrite	24	static
